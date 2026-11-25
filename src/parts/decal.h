@@ -35,7 +35,7 @@ class Decal : public ScriptDispatchImpl<IDecal, &IID_IDecal, &LIBID_VPinballLib>
               public CComCoClass<Decal, &CLSID_Decal>,
               public EventProxy<Decal, &DIID_IDecalEvents>,
               public IConnectionPointContainerImpl<Decal>,
-              public IProvideClassInfo2Impl<&CLSID_Decal, &DIID_IDecalEvents, &LIBID_VPinballLib>,
+              public ScriptClassInfoImpl<&CLSID_Decal, &DIID_IDecalEvents, &LIBID_VPinballLib>,
               public IEditable,
               public IHitable, // only used for UI picking
               public IRenderable,

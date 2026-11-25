@@ -79,7 +79,7 @@ class Primitive :
    public CComCoClass<Primitive, &CLSID_Primitive>,
    public EventProxy<Primitive, &DIID_IPrimitiveEvents>,
    public IConnectionPointContainerImpl<Primitive>,
-   public IProvideClassInfo2Impl<&CLSID_Primitive, &DIID_IPrimitiveEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Primitive, &DIID_IPrimitiveEvents, &LIBID_VPinballLib>,
 
    public IEditable,
    public IHitable,

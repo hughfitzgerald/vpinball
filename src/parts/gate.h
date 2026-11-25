@@ -36,7 +36,7 @@ class Gate :
    public CComCoClass<Gate, &CLSID_Gate>,
    public EventProxy<Gate, &DIID_IGateEvents>,
    public IConnectionPointContainerImpl<Gate>,
-   public IProvideClassInfo2Impl<&CLSID_Gate, &DIID_IGateEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Gate, &DIID_IGateEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable,
    public IRenderable,

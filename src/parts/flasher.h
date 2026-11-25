@@ -79,7 +79,7 @@ class Flasher :
    public ScriptDispatchImpl<IFlasher, &IID_IFlasher, &LIBID_VPinballLib>,
    public EventProxy<Flasher, &DIID_IFlasherEvents>,
    public IConnectionPointContainerImpl<Flasher>,
-   public IProvideClassInfo2Impl<&CLSID_Flasher, &DIID_IFlasherEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Flasher, &DIID_IFlasherEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable, // only used for UI picking
    public IRenderable,

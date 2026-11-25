@@ -111,7 +111,7 @@ class PinTable : public CComObjectRootEx<CComSingleThreadModel>,
                  // IProvideClassInfo provides an ITypeInfo for the whole coclass
                  // allowing VBScript to get the set of events to sync to.
                  // VBA does not need this interface for some reason
-                 public IProvideClassInfo2Impl<&CLSID_Table, &DIID_ITableEvents, &LIBID_VPinballLib>,
+                 public ScriptClassInfoImpl<&CLSID_Table, &DIID_ITableEvents, &LIBID_VPinballLib>,
                  public IScriptable,
                  public IEditable,
                  public IPerPropertyBrowsing // Ability to fill in dropdown in property browser

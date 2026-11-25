@@ -40,7 +40,7 @@ class DispReel :
    public CComCoClass<DispReel, &CLSID_DispReel>,
    public EventProxy<DispReel, &DIID_IDispReelEvents>,
    public IConnectionPointContainerImpl<DispReel>,
-   public IProvideClassInfo2Impl<&CLSID_DispReel, &DIID_IDispReelEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_DispReel, &DIID_IDispReelEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IScriptable,
    public IFireEvents,

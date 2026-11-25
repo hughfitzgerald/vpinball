@@ -10,7 +10,7 @@ class Collection :
    public CComCoClass<Collection, &CLSID_Collection>,
    public EventProxy<Collection, &DIID_ICollectionEvents>,
    public IConnectionPointContainerImpl<Collection>,
-   public IProvideClassInfo2Impl<&CLSID_Collection, &DIID_ICollectionEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Collection, &DIID_ICollectionEvents, &LIBID_VPinballLib>,
    public IScriptable
 {
 public:

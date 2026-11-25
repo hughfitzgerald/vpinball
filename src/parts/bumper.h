@@ -43,7 +43,7 @@ class Bumper :
    public CComCoClass<Bumper, &CLSID_Bumper>,
    public EventProxy<Bumper, &DIID_IBumperEvents>,
    public IConnectionPointContainerImpl<Bumper>,
-   public IProvideClassInfo2Impl<&CLSID_Bumper, &DIID_IBumperEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Bumper, &DIID_IBumperEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable,
    public IRenderable,

@@ -167,8 +167,30 @@ public:
    void STDMETHODCALLTYPE ReleaseFuncDesc(FUNCDESC* pFuncDesc) override { }
    void STDMETHODCALLTYPE ReleaseVarDesc(VARDESC* pVarDesc) override { }
 };
+
+// VBScript's TypeName() asks IProvideClassInfo::GetClassInfo first and only falls back to IDispatch::GetTypeInfo when
+// the object does not implement IProvideClassInfo. Microsoft's IProvideClassInfo2Impl also loads the typelib, so like
+// libwinevbs's, GetClassInfo returns the ITypeInfo of ScriptDispatchImpl (GetGUID still comes from Microsoft's ATL).
+template <const CLSID* pcoclsid, const IID* psrcid, const GUID* plibid>
+class ATL_NO_VTABLE ScriptClassInfoImpl : public IProvideClassInfo2Impl<pcoclsid, psrcid, plibid>
+{
+public:
+   STDMETHOD(GetClassInfo)(ITypeInfo** pptinfo) override
+   {
+      if (pptinfo == nullptr)
+         return E_POINTER;
+      *pptinfo = nullptr;
+      IDispatch* disp = nullptr;
+      if (FAILED(this->QueryInterface(IID_IDispatch, reinterpret_cast<void**>(&disp))) || disp == nullptr)
+         return E_NOTIMPL;
+      const HRESULT hr = disp->GetTypeInfo(0, 0, pptinfo);
+      disp->Release();
+      return hr;
+   }
+};
 #else
 template <class T, const IID* piid, const GUID* plibid> using ScriptDispatchImpl = IDispatchImpl<T, piid, plibid>;
+template <const CLSID* pcoclsid, const IID* psrcid, const GUID* plibid> using ScriptClassInfoImpl = IProvideClassInfo2Impl<pcoclsid, psrcid, plibid>;
 #endif
 
 

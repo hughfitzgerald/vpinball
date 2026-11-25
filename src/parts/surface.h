@@ -47,7 +47,7 @@ class Surface :
    public ScriptDispatchImpl<IWall, &IID_IWall, &LIBID_VPinballLib>,
    public EventProxy<Surface, &DIID_IWallEvents>,
    public IConnectionPointContainerImpl<Surface>,
-   public IProvideClassInfo2Impl<&CLSID_Wall, &DIID_IWallEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Wall, &DIID_IWallEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable,
    public IRenderable,

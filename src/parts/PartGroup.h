@@ -38,7 +38,7 @@ class PartGroup :
    public CComCoClass<PartGroup, &CLSID_PartGroup>,
    public EventProxy<PartGroup, &DIID_IPartGroupEvents>,
    public IConnectionPointContainerImpl<PartGroup>,
-   public IProvideClassInfo2Impl<&CLSID_PartGroup, &DIID_IPartGroupEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_PartGroup, &DIID_IPartGroupEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IScriptable,
    public IFireEvents,

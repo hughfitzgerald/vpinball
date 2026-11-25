@@ -40,7 +40,7 @@ class HitTarget :
    public CComCoClass<HitTarget, &CLSID_HitTarget>,
    public EventProxy<HitTarget, &DIID_IHitTargetEvents>,
    public IConnectionPointContainerImpl<HitTarget>,
-   public IProvideClassInfo2Impl<&CLSID_HitTarget, &DIID_IHitTargetEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_HitTarget, &DIID_IHitTargetEvents, &LIBID_VPinballLib>,
 
    public IEditable,
    public IHitable,

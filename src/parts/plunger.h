@@ -115,7 +115,7 @@ class Plunger :
    public CComCoClass<Plunger, &CLSID_Plunger>,
    public EventProxy<Plunger, &DIID_IPlungerEvents>,
    public IConnectionPointContainerImpl<Plunger>,
-   public IProvideClassInfo2Impl<&CLSID_Plunger, &DIID_IPlungerEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Plunger, &DIID_IPlungerEvents, &LIBID_VPinballLib>,
    //public CComObjectRootEx<CComSingleThreadModel>,
 
    public IEditable,

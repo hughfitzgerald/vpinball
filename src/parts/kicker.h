@@ -38,7 +38,7 @@ class Kicker :
    public CComCoClass<Kicker, &CLSID_Kicker>,
    public EventProxy<Kicker, &DIID_IKickerEvents>,
    public IConnectionPointContainerImpl<Kicker>,
-   public IProvideClassInfo2Impl<&CLSID_Kicker, &DIID_IKickerEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Kicker, &DIID_IKickerEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable,
    public IRenderable,

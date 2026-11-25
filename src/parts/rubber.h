@@ -37,7 +37,7 @@ class Rubber :
    public CComCoClass<Rubber, &CLSID_Rubber>,
    public EventProxy<Rubber, &DIID_IRubberEvents>,
    public IConnectionPointContainerImpl<Rubber>,
-   public IProvideClassInfo2Impl<&CLSID_Rubber, &DIID_IRubberEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Rubber, &DIID_IRubberEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable,
    public IRenderable,

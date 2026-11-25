@@ -75,7 +75,7 @@ class Light :
    public CComCoClass<Light, &CLSID_Light>,
    public EventProxy<Light, &DIID_ILightEvents>,
    public IConnectionPointContainerImpl<Light>,
-   public IProvideClassInfo2Impl<&CLSID_Light, &DIID_ILightEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Light, &DIID_ILightEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable, // only used for UI picking
    public IRenderable,

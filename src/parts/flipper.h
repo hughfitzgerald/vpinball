@@ -64,7 +64,7 @@ class Flipper :
    public CComCoClass<Flipper, &CLSID_Flipper>,
    public ScriptDispatchImpl<IFlipper, &IID_IFlipper, &LIBID_VPinballLib>,
    public IConnectionPointContainerImpl<Flipper>,
-   public IProvideClassInfo2Impl<&CLSID_Flipper, &DIID_IFlipperEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Flipper, &DIID_IFlipperEvents, &LIBID_VPinballLib>,
    public EventProxy<Flipper, &DIID_IFlipperEvents>,
    public IEditable,
    public IHitable,

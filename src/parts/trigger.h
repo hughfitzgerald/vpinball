@@ -43,7 +43,7 @@ class Trigger :
    public CComCoClass<Trigger, &CLSID_Trigger>,
    public EventProxy<Trigger, &DIID_ITriggerEvents>,
    public IConnectionPointContainerImpl<Trigger>,
-   public IProvideClassInfo2Impl<&CLSID_Trigger, &DIID_ITriggerEvents, &LIBID_VPinballLib>,
+   public ScriptClassInfoImpl<&CLSID_Trigger, &DIID_ITriggerEvents, &LIBID_VPinballLib>,
    public IEditable,
    public IHitable,
    public IRenderable,
