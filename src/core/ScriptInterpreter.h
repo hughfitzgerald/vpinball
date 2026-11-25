@@ -149,7 +149,7 @@ private:
 
    class DebuggerModule :
       public CComObjectRootEx<CComSingleThreadModel>,
-      public IDispatchImpl<IVPDebug, &IID_IVPDebug, &LIBID_VPinballLib>,
+      public ScriptDispatchImpl<IVPDebug, &IID_IVPDebug, &LIBID_VPinballLib>,
       public IScriptable
    {
 #ifdef VPX_MANUAL_SCRIPT_DISPATCH

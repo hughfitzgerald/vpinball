@@ -31,7 +31,7 @@ public:
 
 class Textbox :
    public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<ITextbox, &IID_ITextbox, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<ITextbox, &IID_ITextbox, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    //public CComObjectRoot,
    public CComCoClass<Textbox, &CLSID_Textbox>,

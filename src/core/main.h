@@ -118,6 +118,59 @@ using std::wstring;
 #include <atlsafe.h>
 #endif
 
+// Base of the scriptable classes. They implement the type name that VBScript's TypeName() reads through
+// IDispatch::GetTypeInfo and ITypeInfo::GetDocumentation(MEMBERID_NIL).
+// - Win32 editor: Microsoft's ATL, from the registered typelib
+// - MinGW standalone: libwinevbs's ATL, whose IDispatchImpl is also the ITypeInfo it returns, so the GetDocumentation
+//   generated from the IDL (see tools/idl/) answers
+// - MSVC standalone: Microsoft's ATL would load the typelib, which fails with libwinevbs (see make/winevbs64-msvc.def),
+//   and TypeName() would return "Object" for every table element. So libwinevbs's behavior is reproduced here.
+#if defined(__STANDALONE__) && defined(_MSC_VER)
+template <class T, const IID* piid, const GUID* plibid>
+class ATL_NO_VTABLE ScriptDispatchImpl : public IDispatchImpl<T, piid, plibid>, public ITypeInfo
+{
+public:
+   // Resolves the ambiguity between the IUnknown of T and of ITypeInfo, both implemented by CComObject
+   virtual ULONG STDMETHODCALLTYPE AddRef() = 0;
+   virtual ULONG STDMETHODCALLTYPE Release() = 0;
+
+   STDMETHOD(GetTypeInfo)(UINT iTInfo, LCID lcid, ITypeInfo** ppTInfo) override
+   {
+      if (ppTInfo == nullptr)
+         return E_POINTER;
+      *ppTInfo = nullptr;
+      if (iTInfo != 0)
+         return DISP_E_BADINDEX;
+      *ppTInfo = static_cast<ITypeInfo*>(this);
+      AddRef();
+      return S_OK;
+   }
+
+   // ITypeInfo, only GetDocumentation is implemented (by the scriptable class)
+   STDMETHOD(GetTypeAttr)(TYPEATTR** ppTypeAttr) override { return E_NOTIMPL; }
+   STDMETHOD(GetTypeComp)(ITypeComp** ppTComp) override { return E_NOTIMPL; }
+   STDMETHOD(GetFuncDesc)(UINT index, FUNCDESC** ppFuncDesc) override { return E_NOTIMPL; }
+   STDMETHOD(GetVarDesc)(UINT index, VARDESC** ppVarDesc) override { return E_NOTIMPL; }
+   STDMETHOD(GetNames)(MEMBERID memid, BSTR* rgBstrNames, UINT cMaxNames, UINT* pcNames) override { return E_NOTIMPL; }
+   STDMETHOD(GetRefTypeOfImplType)(UINT index, HREFTYPE* pRefType) override { return E_NOTIMPL; }
+   STDMETHOD(GetImplTypeFlags)(UINT index, INT* pImplTypeFlags) override { return E_NOTIMPL; }
+   STDMETHOD(GetIDsOfNames)(LPOLESTR* rgszNames, UINT cNames, MEMBERID* pMemId) override { return E_NOTIMPL; }
+   STDMETHOD(Invoke)(PVOID pvInstance, MEMBERID memid, WORD wFlags, DISPPARAMS* pDispParams, VARIANT* pVarResult, EXCEPINFO* pExcepInfo, UINT* puArgErr) override { return E_NOTIMPL; }
+   STDMETHOD(GetDocumentation)(MEMBERID memid, BSTR* pBstrName, BSTR* pBstrDocString, DWORD* pdwHelpContext, BSTR* pBstrHelpFile) override { return E_NOTIMPL; }
+   STDMETHOD(GetDllEntry)(MEMBERID memid, INVOKEKIND invKind, BSTR* pBstrDllName, BSTR* pBstrName, WORD* pwOrdinal) override { return E_NOTIMPL; }
+   STDMETHOD(GetRefTypeInfo)(HREFTYPE hRefType, ITypeInfo** ppTInfo) override { return E_NOTIMPL; }
+   STDMETHOD(AddressOfMember)(MEMBERID memid, INVOKEKIND invKind, PVOID* ppv) override { return E_NOTIMPL; }
+   STDMETHOD(CreateInstance)(IUnknown* pUnkOuter, REFIID riid, PVOID* ppvObj) override { return E_NOTIMPL; }
+   STDMETHOD(GetMops)(MEMBERID memid, BSTR* pBstrMops) override { return E_NOTIMPL; }
+   STDMETHOD(GetContainingTypeLib)(ITypeLib** ppTLib, UINT* pIndex) override { return E_NOTIMPL; }
+   void STDMETHODCALLTYPE ReleaseTypeAttr(TYPEATTR* pTypeAttr) override { }
+   void STDMETHODCALLTYPE ReleaseFuncDesc(FUNCDESC* pFuncDesc) override { }
+   void STDMETHODCALLTYPE ReleaseVarDesc(VARDESC* pVarDesc) override { }
+};
+#else
+template <class T, const IID* piid, const GUID* plibid> using ScriptDispatchImpl = IDispatchImpl<T, piid, plibid>;
+#endif
+
 
 // TODO Custom defines to be removed from PCH to get back to a cleaner codebase with includes corresponding to the actual dependencies of each file (beside std/OS/...)
 

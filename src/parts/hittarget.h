@@ -35,7 +35,7 @@ public:
 
 class HitTarget :
    public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<IHitTarget, &IID_IHitTarget, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IHitTarget, &IID_IHitTarget, &LIBID_VPinballLib>,
    //public CComObjectRoot,
    public CComCoClass<HitTarget, &CLSID_HitTarget>,
    public EventProxy<HitTarget, &DIID_IHitTargetEvents>,

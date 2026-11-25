@@ -37,7 +37,7 @@ public:
 
 class Bumper :
    //public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<IBumper, &IID_IBumper, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IBumper, &IID_IBumper, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Bumper, &CLSID_Bumper>,

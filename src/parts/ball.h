@@ -138,7 +138,7 @@ public:
 
 class Ball :
    public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<IBall, &IID_IBall, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IBall, &IID_IBall, &LIBID_VPinballLib>,
    //public CComObjectRoot,
    public CComCoClass<Ball, &CLSID_Ball>,
    public EventProxy<Ball, &DIID_IBallEvents>,

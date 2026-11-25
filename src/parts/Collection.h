@@ -5,7 +5,7 @@
 class IEditable;
 
 class Collection :
-   public IDispatchImpl<ICollection, &IID_ICollection, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<ICollection, &IID_ICollection, &LIBID_VPinballLib>,
    public CComObjectRoot,
    public CComCoClass<Collection, &CLSID_Collection>,
    public EventProxy<Collection, &DIID_ICollectionEvents>,

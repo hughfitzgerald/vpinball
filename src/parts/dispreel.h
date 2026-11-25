@@ -34,7 +34,7 @@ public:
 
 class DispReel :
    public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<IDispReel, &IID_IDispReel, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IDispReel, &IID_IDispReel, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    //public CComObjectRoot,
    public CComCoClass<DispReel, &CLSID_DispReel>,

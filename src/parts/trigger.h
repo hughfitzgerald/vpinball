@@ -37,7 +37,7 @@ public:
 };
 
 class Trigger :
-   public IDispatchImpl<ITrigger, &IID_ITrigger, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<ITrigger, &IID_ITrigger, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Trigger, &CLSID_Trigger>,

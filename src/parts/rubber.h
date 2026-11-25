@@ -31,7 +31,7 @@ public:
 };
 
 class Rubber :
-   public IDispatchImpl<IRubber, &IID_IRubber, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IRubber, &IID_IRubber, &LIBID_VPinballLib>,
    public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Rubber, &CLSID_Rubber>,

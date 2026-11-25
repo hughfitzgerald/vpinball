@@ -30,7 +30,7 @@ public:
    FontDesc m_font;
 };
 
-class Decal : public IDispatchImpl<IDecal, &IID_IDecal, &LIBID_VPinballLib>,
+class Decal : public ScriptDispatchImpl<IDecal, &IID_IDecal, &LIBID_VPinballLib>,
               public CComObjectRoot,
               public CComCoClass<Decal, &CLSID_Decal>,
               public EventProxy<Decal, &DIID_IDecalEvents>,

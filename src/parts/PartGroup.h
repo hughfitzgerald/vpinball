@@ -33,7 +33,7 @@ public:
 
 class PartGroup :
    public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<IPartGroup, &IID_IPartGroup, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IPartGroup, &IID_IPartGroup, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComCoClass<PartGroup, &CLSID_PartGroup>,
    public EventProxy<PartGroup, &DIID_IPartGroupEvents>,

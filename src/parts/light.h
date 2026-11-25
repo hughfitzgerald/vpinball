@@ -69,7 +69,7 @@ public:
 };
 
 class Light :
-   public IDispatchImpl<ILight, &IID_ILight, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<ILight, &IID_ILight, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Light, &CLSID_Light>,

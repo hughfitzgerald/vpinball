@@ -109,7 +109,7 @@ struct PlungerDesc
 };
 
 class Plunger :
-   public IDispatchImpl<IPlunger, &IID_IPlunger, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IPlunger, &IID_IPlunger, &LIBID_VPinballLib>,
    public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Plunger, &CLSID_Plunger>,

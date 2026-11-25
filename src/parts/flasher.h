@@ -76,7 +76,7 @@ public:
 class Flasher :
    public CComObjectRootEx<CComSingleThreadModel>,
    public CComCoClass<Flasher, &CLSID_Flasher>,
-   public IDispatchImpl<IFlasher, &IID_IFlasher, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IFlasher, &IID_IFlasher, &LIBID_VPinballLib>,
    public EventProxy<Flasher, &DIID_IFlasherEvents>,
    public IConnectionPointContainerImpl<Flasher>,
    public IProvideClassInfo2Impl<&CLSID_Flasher, &DIID_IFlasherEvents, &LIBID_VPinballLib>,

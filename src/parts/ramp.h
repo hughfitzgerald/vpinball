@@ -39,7 +39,7 @@ public:
 };
 
 class Ramp :
-   public IDispatchImpl<IRamp, &IID_IRamp, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IRamp, &IID_IRamp, &LIBID_VPinballLib>,
    public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Ramp, &CLSID_Ramp>,

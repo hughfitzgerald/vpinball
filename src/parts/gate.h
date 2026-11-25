@@ -30,7 +30,7 @@ public:
 };
 
 class Gate :
-   public IDispatchImpl<IGate, &IID_IGate, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IGate, &IID_IGate, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Gate, &CLSID_Gate>,

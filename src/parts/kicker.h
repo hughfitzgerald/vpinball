@@ -32,7 +32,7 @@ public:
 class KickerHitCircle;
 
 class Kicker :
-   public IDispatchImpl<IKicker, &IID_IKicker, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<IKicker, &IID_IKicker, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Kicker, &CLSID_Kicker>,

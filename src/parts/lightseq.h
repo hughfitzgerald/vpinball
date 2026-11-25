@@ -65,7 +65,7 @@ struct _tracer
 
 class LightSeq :
    public CComObjectRootEx<CComSingleThreadModel>,
-   public IDispatchImpl<ILightSeq, &IID_ILightSeq, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<ILightSeq, &IID_ILightSeq, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    //public CComObjectRoot,
    public CComCoClass<LightSeq, &CLSID_LightSeq>,

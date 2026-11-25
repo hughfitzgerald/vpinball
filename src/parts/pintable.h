@@ -105,7 +105,7 @@ public:
 };
 
 class PinTable : public CComObjectRootEx<CComSingleThreadModel>,
-                 public IDispatchImpl<ITable, &IID_ITable, &LIBID_VPinballLib>,
+                 public ScriptDispatchImpl<ITable, &IID_ITable, &LIBID_VPinballLib>,
                  public IConnectionPointContainerImpl<PinTable>,
                  public EventProxy<PinTable, &DIID_ITableEvents>,
                  // IProvideClassInfo provides an ITypeInfo for the whole coclass

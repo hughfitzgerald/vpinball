@@ -30,7 +30,7 @@ public:
 class HitSpinner;
 
 class Spinner :
-   public IDispatchImpl<ISpinner, &IID_ISpinner, &LIBID_VPinballLib>,
+   public ScriptDispatchImpl<ISpinner, &IID_ISpinner, &LIBID_VPinballLib>,
    //public ISupportErrorInfo,
    public CComObjectRoot,
    public CComCoClass<Spinner, &CLSID_Spinner>,
